@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 
+import Link from "next/link";
+
 export default function Home() {
   const [data, setData] = useState([]);
   const [post, setPost] = useState({
@@ -77,10 +79,15 @@ export default function Home() {
               key={post._id}
               className="  w-full m-auto p-5 border border-gray-300 rounded-md shadow-md mt-5 "
             >
-              <h3 className=" text-center py-3 text-2xl font-bold ">
-                {post.title}
-              </h3>
-              <p className="  text-center py-3  ">{post.content}</p>
+              <Link href={`/${post._id}`}>
+                <h3 className=" text-center py-3 text-2xl font-bold ">
+                  {post.title}
+                </h3>
+              </Link>
+
+              <p className="  text-center py-3  line-clamp-2  ">
+                {post.content}
+              </p>
             </div>
           ))}
         </div>
